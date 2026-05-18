@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Julie M. E. Pedersen</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
 
@@ -16,15 +17,7 @@
       <h1>Julie M. E. Pedersen</h1>
       <p class="role">PhD Student · University of Edinburgh &nbsp;|&nbsp; Lab Manager · Human Decision-Making Lab</p>
 
-      <p>
-        I am a second-year PhD student in the <a href="https://www.ed.ac.uk/ppls">School of Philosophy, Psychology and Language Sciences</a> at the University of Edinburgh. My thesis develops a framework called <em>moralization by analogy</em> — the idea that moral concern expands when people map the morally relevant features of already-protected groups onto novel targets — and uses computational and behavioural methods to test its predictions.
-      </p>
-      <p>
-        I also study how moral and political beliefs are signalled and inferred at the population level, and how these dynamics give rise to political polarisation. Alongside my PhD, I manage the <a href="https://www.ed.ac.uk/ppls">Human Decision-Making Lab</a> and work part-time as a research contractor with <a href="https://rethinkpriorities.org" target="_blank" rel="noopener">Rethink Priorities</a>.
-      </p>
-      <p>
-        Before starting my PhD, I completed an MSc in Psychological Research with Distinction (2024) and a BSc in Psychology with First Class Honours (2023), both at the University of Edinburgh.
-      </p>
+      <div id="about-text"></div>
 
       <div class="icon-links">
         <a class="icon-link" href="mailto:j.pedersen@ed.ac.uk">
@@ -112,8 +105,23 @@
     }
   }
 
+  async function loadMarkdown(mdPath, containerId) {
+    try {
+      const res = await fetch(mdPath);
+      if (!res.ok) throw new Error();
+      const text = await res.text();
+      const container = document.getElementById(containerId);
+      container.innerHTML = marked.parse(text);
+      container.querySelectorAll('a[href^="http"]').forEach(a => {
+        a.target = '_blank';
+        a.rel = 'noopener';
+      });
+    } catch (e) {}
+  }
+
   loadRecentPubs();
   loadConferences();
+  loadMarkdown('data/about.md', 'about-text');
 </script>
 
 </body>

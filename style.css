@@ -170,12 +170,19 @@ h2 {
 .research-theme {
   margin-bottom: 2rem;
 }
-.research-theme h3 {
+.research-theme h3,
+#research-content h3 {
   font-size: 1.05rem;
   font-weight: normal;
   color: var(--text);
   margin-bottom: 0.4rem;
+  margin-top: 2rem;
 }
+#research-content h3:first-child { margin-top: 0; }
+#research-content p { margin-bottom: 1rem; }
+
+/* ── Markdown prose (about) ── */
+#about-text p { margin-bottom: 0.9rem; }
 
 /* ── Publications ── */
 .pub-list { list-style: none; }

@@ -2,10 +2,11 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "website",
-      "runtimeExecutable": "ruby",
-      "runtimeArgs": ["-run", "-e", "httpd", "/Users/juliepedersen/Library/CloudStorage/OneDrive-UniversityofEdinburgh/website", "-p", "3456"],
-      "port": 3456
+      "name": "jmep-academic-site",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "--directory", "/Users/juliepedersen/Library/CloudStorage/OneDrive-UniversityofEdinburgh/jmep-academic-site", "3456"],
+      "port": 3456,
+      "autoPort": true
     }
   ]
 }

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Research · Julie M. E. Pedersen</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
 
@@ -23,33 +24,26 @@
 <main>
 
   <h2>Research</h2>
-
-  <div class="research-theme">
-    <h3>Moralization by Analogy</h3>
-    <p>
-      My thesis develops a framework called <em>moralization by analogy</em>: the idea that moral concern expands when people recognise that a novel target shares the morally relevant features of an already-protected group. Drawing on computational accounts of analogy and structure-mapping, I develop formal predictions about when and why moral consideration extends to new entities — such as animals, future generations, or AI systems — and test these predictions using behavioural experiments. This work connects cognitive science accounts of analogy and concept learning to foundational questions in moral psychology and normative ethics.
-    </p>
-  </div>
-
-  <div class="research-theme">
-    <h3>Political Polarisation &amp; Agent-Based Modelling</h3>
-    <p>
-      A second strand of my work — developed during my MSc and continuing into my PhD — asks how population-level political polarisation can emerge from individual-level reasoning about values. I build agent-based models in which simulated agents infer the moral values of others from their behaviour and signals, and in turn modulate their own signalling accordingly. This work shows how rational, Bayesian inference under uncertainty — combined with a biased media landscape — can produce the kind of fractionalised, polarised distributions we observe empirically.
-    </p>
-  </div>
-
-  <div class="research-theme">
-    <h3>Animal Ethics &amp; Dietary Choice</h3>
-    <p>
-      During my undergraduate degree I investigated how psychological dissociation — the tendency to mentally separate animal-derived food products from the animals that produced them — moderates the role of disgust in reducing dairy consumption. This work sits at the intersection of moral psychology, consumer behaviour, and animal ethics, and contributes to understanding how moral concern for animals does (or fails to) translate into food choices.
-    </p>
-  </div>
+  <div id="research-content"></div>
 
 </main>
 
 <footer>
   <p>Julie M. E. Pedersen &nbsp;·&nbsp; University of Edinburgh &nbsp;·&nbsp; <a href="mailto:j.pedersen@ed.ac.uk">j.pedersen@ed.ac.uk</a></p>
 </footer>
+
+<script>
+  fetch('data/research.md')
+    .then(r => r.text())
+    .then(text => {
+      const container = document.getElementById('research-content');
+      container.innerHTML = marked.parse(text);
+      container.querySelectorAll('a[href^="http"]').forEach(a => {
+        a.target = '_blank';
+        a.rel = 'noopener';
+      });
+    });
+</script>
 
 </body>
 </html>
