@@ -3,18 +3,33 @@
     "name": "EA Global",
     "url": "https://www.effectivealtruism.org/ea-global/events/ea-global-london-2026",
     "location": "London, UK",
-    "dates": "29–31 May 2026"
+    "dates": "29–31 May 2026",
+    "presentation_type": "",
+    "talk_title": "",
+    "talk_date": "",
+    "talk_time": "",
+    "session_title": ""
   },
   {
     "name": "European Association of Social Psychology General Meeting",
     "url": "https://easp2026strasbourg.com/",
     "location": "Strasbourg, France",
-    "dates": "1–4 July 2026"
+    "dates": "1–4 July 2026",
+    "presentation_type": "Blitz talk",
+    "talk_title": "Moralisation by analogy: A novel perspective on moralisation",
+    "talk_date": "July 2, 2026",
+    "talk_time": "11:50-13:10",
+    "session_title": "Morality: Conceptual and applied issues"
   },
   {
     "name": "Annual Meeting of the Cognitive Science Society",
     "url": "https://cognitivesciencesociety.org/cogsci-2026/",
     "location": "Rio de Janeiro, Brazil",
-    "dates": "23–25 July 2026"
+    "dates": "23–25 July 2026",
+    "presentation_type": "Poster presentation",
+    "talk_title": "Moralization by analogy: A novel perspective on moral change",
+    "talk_date": "TBD",
+    "talk_time": "TBD",
+    "session_title": ""
   }
 ]

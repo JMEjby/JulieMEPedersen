@@ -1,41 +1,35 @@
 [
   {
     "title": "Moralization by Analogy: A Novel Perspective on Moral Change",
-    "authors": "J. M. E. Pedersen, M. Wilks, L. Doumas & A. Moore",
+    "authors": "Pedersen, J. M. E., Wilks, M., Doumas, L. A. A., & Moore, A.",
     "venue": "Proceedings of the Annual Meeting of the Cognitive Science Society",
-    "year": 2025,
+    "year": 2026,
     "links": [
       { "label": "Preprint", "url": "https://osf.io/preprints/psyarxiv/e2r3p_v2" }
     ]
   },
   {
     "title": "Political Polarization and Fractionalisation from Rational Values-Based Inference",
-    "authors": "N. Navarre, J. M. E. Pedersen & A. Moore",
+    "authors": "Navarre, N., Pedersen, J. M. E., & Moore, A.",
     "venue": "Proceedings of the Annual Meeting of the Cognitive Science Society",
     "year": 2025,
     "links": [
-      { "label": "PDF", "url": "https://escholarship.org/uc/item/6gv6j71v" }
+      { "label": "Proceedings", "url": "https://escholarship.org/uc/item/6gv6j71v" },
+      { "label": "Preprint", "url": "https://doi.org/10.31234/osf.io/r4adg_v1" }
     ]
   },
   {
     "title": "Power Motivations and Risk Preferences",
-    "authors": "A. Ithurburn, A. Moore & J. M. E. Pedersen",
+    "authors": "Ithurburn, A., Moore, A., & Pedersen, J. M. E.",
     "venue": "SAGE Open",
     "year": 2025,
     "links": [
       { "label": "Journal", "url": "https://doi.org/10.1177/21582440251363317" }
     ]
   },
-  {
-    "title": "Uncertain Identity Inference in a Biased Media Landscape",
-    "authors": "J. M. E. Pedersen & A. Moore",
-    "venue": "Proceedings of the Annual Meeting of the Cognitive Science Society",
-    "year": 2024,
-    "links": []
-  },
-  {
+{
     "title": "Dissociation of Dairy From its Animal Origin and the Role of Disgust to Reduce Dairy Consumption",
-    "authors": "J. M. E. Pedersen & S. Loughnan",
+    "authors": "Pedersen, J. M. E., & Loughnan, S.",
     "venue": "Psychology of Human-Animal Intergroup Relations",
     "year": 2024,
     "links": [
@@ -44,9 +38,11 @@
   },
   {
     "title": "Simulating Political Polarization as a Function of Uncertain Inference and Signaling of Moral Values",
-    "authors": "J. M. E. Pedersen & A. Moore",
+    "authors": "Pedersen, J. M. E., & Moore, A.",
     "venue": "Proceedings of the Annual Meeting of the Cognitive Science Society",
     "year": 2023,
-    "links": []
+    "links": [
+      { "label": "Proceedings", "url": "https://escholarship.org/uc/item/0d143859" }
+    ]
   }
 ]
