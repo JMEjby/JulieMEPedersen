@@ -13,7 +13,7 @@
   <nav>
     <span class="nav-name">Julie M. E. Pedersen</span>
     <ul class="nav-links">
-      <li><a href="index.html" class="active">About</a></li>
+      <li><a href="index.html" class="active">Home</a></li>
       <li><a href="research.html">Research</a></li>
       <li><a href="publications.html">Publications</a></li>
       <li><a href="cv.pdf">CV</a></li>
@@ -26,7 +26,7 @@
     <img class="profile-photo" src="Bio pic.png" alt="Julie M. E. Pedersen" />
     <div class="profile-text">
       <h1>Julie M. E. Pedersen</h1>
-      <p class="role">PhD Student · University of Edinburgh &nbsp;|&nbsp; Lab Manager · Human Decision-Making Lab</p>
+      <p class="role">PhD Student · University of Edinburgh </p>
 
       <div id="about-text"></div>
 
@@ -77,11 +77,17 @@
       if (!res.ok) throw new Error();
       const pubs = await res.json();
       const recent = pubs.slice(0, 3);
-      document.getElementById('recent-pubs').innerHTML = recent.map(p => `
+      document.getElementById('recent-pubs').innerHTML = recent.map(p => {
+        const url = p.links && p.links.length ? p.links[0].url : null;
+        const title = url
+          ? `<a href="${url}" target="_blank" rel="noopener">${p.title}</a>`
+          : p.title;
+        return `
         <li class="pub-item">
-          <span class="pub-title">${p.title}</span>
+          <span class="pub-title">${title}</span>
           <p class="pub-meta">${p.authors} (${p.year}). <em>${p.venue}</em>.</p>
-        </li>`).join('');
+        </li>`;
+      }).join('');
     } catch (e) {
       document.getElementById('recent-pubs').innerHTML = '';
     }
