@@ -23,71 +23,13 @@
 <main>
 
   <h2>Publications</h2>
-
-  <ul class="pub-list">
-
-    <li class="pub-item">
-      <span class="pub-title">Moralization by Analogy: A Novel Perspective on Moral Change</span>
-      <p class="pub-meta">J. M. E. Pedersen, M. Wilks, L. Doumas &amp; A. Moore &nbsp;·&nbsp; <em>Proceedings of the Annual Meeting of the Cognitive Science Society</em>, 2025</p>
-      <div class="pub-links">
-        <a class="pub-link" href="https://osf.io/preprints/psyarxiv/e2r3p_v2" target="_blank" rel="noopener">Preprint</a>
-      </div>
-    </li>
-
-    <li class="pub-item">
-      <span class="pub-title">Political Polarization and Fractionalisation from Rational Values-Based Inference</span>
-      <p class="pub-meta">N. Navarre, J. M. E. Pedersen &amp; A. Moore &nbsp;·&nbsp; <em>Proceedings of the Annual Meeting of the Cognitive Science Society</em>, 2025</p>
-      <div class="pub-links">
-        <a class="pub-link" href="https://escholarship.org/uc/item/6gv6j71v" target="_blank" rel="noopener">PDF</a>
-      </div>
-    </li>
-
-    <li class="pub-item">
-      <span class="pub-title">Power Motivations and Risk Preferences</span>
-      <p class="pub-meta">A. Ithurburn, A. Moore &amp; J. M. E. Pedersen &nbsp;·&nbsp; <em>SAGE Open</em>, 2025</p>
-      <div class="pub-links">
-        <a class="pub-link" href="https://doi.org/10.1177/21582440251363317" target="_blank" rel="noopener">Journal</a>
-      </div>
-    </li>
-
-    <li class="pub-item">
-      <span class="pub-title">Uncertain Identity Inference in a Biased Media Landscape</span>
-      <p class="pub-meta">J. M. E. Pedersen &amp; A. Moore &nbsp;·&nbsp; <em>Proceedings of the Annual Meeting of the Cognitive Science Society</em>, 2024</p>
-      <div class="pub-links">
-        <a class="pub-link" href="#" title="Add link">PDF</a>
-        <a class="pub-link" href="#" title="Add link">Preprint</a>
-      </div>
-    </li>
-
-    <li class="pub-item">
-      <span class="pub-title">Dissociation of Dairy From its Animal Origin and the Role of Disgust to Reduce Dairy Consumption</span>
-      <p class="pub-meta">J. M. E. Pedersen &amp; S. Loughnan &nbsp;·&nbsp; <em>Psychology of Human-Animal Intergroup Relations</em>, 2024</p>
-      <div class="pub-links">
-        <a class="pub-link" href="https://doi.org/10.5964/phair.10387" target="_blank" rel="noopener">Journal</a>
-      </div>
-    </li>
-
-    <li class="pub-item">
-      <span class="pub-title">Simulating Political Polarization as a Function of Uncertain Inference and Signaling of Moral Values</span>
-      <p class="pub-meta">J. M. E. Pedersen &amp; A. Moore &nbsp;·&nbsp; <em>Proceedings of the Annual Meeting of the Cognitive Science Society</em>, 2023</p>
-      <div class="pub-links">
-        <a class="pub-link" href="#" title="Add link">PDF</a>
-        <a class="pub-link" href="#" title="Add link">Preprint</a>
-      </div>
-    </li>
-
+  <ul class="pub-list" id="publications-list">
+    <li class="pub-item" style="color: var(--text-light, #888)">Loading…</li>
   </ul>
 
   <h2>Other Writing</h2>
-
-  <ul class="pub-list">
-    <li class="pub-item">
-      <span class="pub-title">EA Survey 2024: Cause Prioritization</span>
-      <p class="pub-meta">J. M. E. Pedersen &amp; D. Moss &nbsp;·&nbsp; <em>EA Forum</em>, December 2025</p>
-      <div class="pub-links">
-        <a class="pub-link" href="https://forum.effectivealtruism.org/posts/CKwDgZGLipchAoxtN/ea-survey-2024-cause-prioritization" target="_blank" rel="noopener">Post</a>
-      </div>
-    </li>
+  <ul class="pub-list" id="writing-list">
+    <li class="pub-item" style="color: var(--text-light, #888)">Loading…</li>
   </ul>
 
 </main>
@@ -95,6 +37,37 @@
 <footer>
   <p>Julie M. E. Pedersen &nbsp;·&nbsp; University of Edinburgh &nbsp;·&nbsp; <a href="mailto:j.pedersen@ed.ac.uk">j.pedersen@ed.ac.uk</a></p>
 </footer>
+
+<script>
+  function renderPubItem(item) {
+    const links = item.links && item.links.length
+      ? `<div class="pub-links">${item.links.map(l =>
+          `<a class="pub-link" href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`
+        ).join('')}</div>`
+      : '';
+    return `
+      <li class="pub-item">
+        <span class="pub-title">${item.title}</span>
+        <p class="pub-meta">${item.authors} &nbsp;·&nbsp; <em>${item.venue}</em>, ${item.year}</p>
+        ${links}
+      </li>`;
+  }
+
+  async function loadList(jsonPath, listId) {
+    try {
+      const res = await fetch(jsonPath);
+      if (!res.ok) throw new Error(res.status);
+      const items = await res.json();
+      document.getElementById(listId).innerHTML = items.map(renderPubItem).join('');
+    } catch (e) {
+      document.getElementById(listId).innerHTML =
+        '<li class="pub-item" style="color:#c00">Could not load data. If you are viewing this file directly in a browser (not via a server), open it with a local server instead.</li>';
+    }
+  }
+
+  loadList('data/publications.json', 'publications-list');
+  loadList('data/writing.json', 'writing-list');
+</script>
 
 </body>
 </html>

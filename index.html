@@ -58,49 +58,17 @@
     </div>
   </div>
 
-  <h2>Research Interests</h2>
-  <div class="interests">
-    <span class="interest-tag">Moralization by analogy</span>
-    <span class="interest-tag">Moral psychology</span>
-    <span class="interest-tag">Political polarisation</span>
-    <span class="interest-tag">Agent-based modelling</span>
-    <span class="interest-tag">Identity inference &amp; signalling</span>
-    <span class="interest-tag">Animal ethics</span>
-  </div>
-
   <h2>Recent Work</h2>
-  <ul class="pub-list">
-    <li class="pub-item">
-      <span class="pub-title">Moralization by Analogy: A Novel Perspective on Moral Change</span>
-      <p class="pub-meta">J. M. E. Pedersen, M. Wilks, L. Doumas &amp; A. Moore &nbsp;·&nbsp; <em>Proceedings of the Annual Meeting of the Cognitive Science Society</em>, 2025</p>
-    </li>
-    <li class="pub-item">
-      <span class="pub-title">Political Polarization and Fractionalisation from Rational Values-Based Inference</span>
-      <p class="pub-meta">N. Navarre, J. M. E. Pedersen &amp; A. Moore &nbsp;·&nbsp; <em>Proceedings of the Annual Meeting of the Cognitive Science Society</em>, 2025</p>
-    </li>
-    <li class="pub-item">
-      <span class="pub-title">Power Motivations and Risk Preferences</span>
-      <p class="pub-meta">A. Ithurburn, A. Moore &amp; J. M. E. Pedersen &nbsp;·&nbsp; <em>SAGE Open</em>, 2025</p>
-    </li>
+  <ul class="pub-list" id="recent-pubs">
+    <li class="pub-item" style="color: var(--text-light, #888)">Loading…</li>
   </ul>
   <p style="margin-top:0.8rem;">
     <a href="publications.html">View all publications →</a>
   </p>
 
   <h2>Where to Find Me</h2>
-  <ul class="pub-list">
-    <li class="pub-item">
-      <span class="pub-title"><a href="https://www.effectivealtruism.org/ea-global/events/ea-global-london-2026" target="_blank" rel="noopener">EA Global</a></span>
-      <p class="pub-meta">London, UK &nbsp;·&nbsp; 29–31 May 2026</p>
-    </li>
-    <li class="pub-item">
-      <span class="pub-title"><a href="https://easp2026strasbourg.com/" target="_blank" rel="noopener">European Association of Social Psychology General Meeting</a></span>
-      <p class="pub-meta">Strasbourg, France &nbsp;·&nbsp; 1–4 July 2026</p>
-    </li>
-    <li class="pub-item">
-      <span class="pub-title"><a href="https://cognitivesciencesociety.org/cogsci-2026/" target="_blank" rel="noopener">Annual Meeting of the Cognitive Science Society</a></span>
-      <p class="pub-meta">Rio de Janeiro, Brazil &nbsp;·&nbsp; 23–25 July 2026</p>
-    </li>
+  <ul class="pub-list" id="conferences-list">
+    <li class="pub-item" style="color: var(--text-light, #888)">Loading…</li>
   </ul>
 
 </main>
@@ -108,6 +76,44 @@
 <footer>
   <p>Julie M. E. Pedersen &nbsp;·&nbsp; University of Edinburgh &nbsp;·&nbsp; <a href="mailto:j.pedersen@ed.ac.uk">j.pedersen@ed.ac.uk</a></p>
 </footer>
+
+<script>
+  async function loadRecentPubs() {
+    try {
+      const res = await fetch('data/publications.json');
+      if (!res.ok) throw new Error();
+      const pubs = await res.json();
+      const recent = pubs.slice(0, 3);
+      document.getElementById('recent-pubs').innerHTML = recent.map(p => `
+        <li class="pub-item">
+          <span class="pub-title">${p.title}</span>
+          <p class="pub-meta">${p.authors} &nbsp;·&nbsp; <em>${p.venue}</em>, ${p.year}</p>
+        </li>`).join('');
+    } catch (e) {
+      document.getElementById('recent-pubs').innerHTML = '';
+    }
+  }
+
+  async function loadConferences() {
+    try {
+      const res = await fetch('data/conferences.json');
+      if (!res.ok) throw new Error();
+      const conferences = await res.json();
+      document.getElementById('conferences-list').innerHTML = conferences.map(c => `
+        <li class="pub-item">
+          <span class="pub-title">${c.url
+            ? `<a href="${c.url}" target="_blank" rel="noopener">${c.name}</a>`
+            : c.name}</span>
+          <p class="pub-meta">${c.location} &nbsp;·&nbsp; ${c.dates}</p>
+        </li>`).join('');
+    } catch (e) {
+      document.getElementById('conferences-list').innerHTML = '';
+    }
+  }
+
+  loadRecentPubs();
+  loadConferences();
+</script>
 
 </body>
 </html>
