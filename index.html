@@ -16,7 +16,7 @@
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="research.html">Research</a></li>
       <li><a href="publications.html">Publications</a></li>
-      <li><a href="cv.pdf">CV</a></li>
+      <li><a href="JMEP CV.pdf">CV</a></li>
     </ul>
   </nav>
 </header>
@@ -75,7 +75,7 @@
       const res = await fetch('data/publications.json');
       if (!res.ok) throw new Error();
       const pubs = await res.json();
-      const recent = pubs.slice(0, 3);
+      const recent = pubs.slice(0, 2);
       document.getElementById('recent-pubs').innerHTML = recent.map(p => {
         const url = p.links && p.links.length ? p.links[0].url : null;
         const title = url
