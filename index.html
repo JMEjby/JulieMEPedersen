@@ -25,8 +25,7 @@
   <div class="profile">
     <img class="profile-photo" src="Bio pic.png" alt="Julie M. E. Pedersen" />
     <div class="profile-text">
-      <h1>Julie M. E. Pedersen</h1>
-      <p class="role">PhD Student · University of Edinburgh </p>
+      <h1>About me</h1>
 
       <div id="about-text"></div>
 
@@ -99,13 +98,16 @@
       if (!res.ok) throw new Error();
       const conferences = await res.json();
       document.getElementById('conferences-list').innerHTML = conferences.map(c => {
-        const presentation = [
-          c.presentation_type,
-          c.talk_date,
-          c.talk_time,
-          c.session_title ? `Session: ${c.session_title}` : '',
-          c.talk_title ? `"${c.talk_title}"` : ''
-        ].filter(Boolean).join(' &nbsp;·&nbsp; ');
+        let presentation = '';
+        if (c.presentation_type || c.talk_title) {
+          const parts = [];
+          parts.push([c.presentation_type, c.talk_title ? `<em>${c.talk_title}</em>` : ''].filter(Boolean).join(': '));
+          if (c.session_title) parts.push(`In the ${c.session_title} session`);
+          const bothTBD = c.talk_date === 'TBD' && c.talk_time === 'TBD';
+          const dateTime = bothTBD ? 'TBD' : [c.talk_date, c.talk_time].filter(Boolean).join(', ');
+          if (dateTime) parts.push(`@${dateTime}`);
+          presentation = parts.join(' &nbsp;·&nbsp; ');
+        }
         return `
         <li class="pub-item">
           <span class="pub-title">${c.url

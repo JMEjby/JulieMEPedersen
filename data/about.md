@@ -1,4 +1,4 @@
-I am a PhD student in Psychology at the [School of Philosophy, Psychology and Language Sciences](https://www.ed.ac.uk/ppls) at the University of Edinburgh. 
+I am a PhD student in Psychology at the University of Edinburgh. 
 My work combines cognitive and quantitative modelling and psychological research methods to study moral psychology.
 
 I would summarise my work so far as studying the psychological mechanisms that allow us to make up or change our moral minds.
