@@ -178,7 +178,8 @@ h2 {
   margin-top: 2rem;
 }
 #research-content h3:first-child { margin-top: 0; }
-#research-content p { margin-bottom: 1rem; }
+#research-content h3 { color: var(--sage-dark); font-weight: bold; }
+#research-content p { margin-bottom: 1rem; font-size: 0.92rem; }
 
 /* ── Markdown prose (about) ── */
 #about-text p { margin-bottom: 0.9rem; font-size: 0.92rem; }

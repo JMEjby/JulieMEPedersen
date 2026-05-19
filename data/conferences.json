@@ -8,7 +8,8 @@
     "talk_title": "",
     "talk_date": "",
     "talk_time": "",
-    "session_title": ""
+    "session_title": "",
+    "end_date": "2026-05-31"
   },
   {
     "name": "European Association of Social Psychology General Meeting",
@@ -19,7 +20,8 @@
     "talk_title": "Moralisation by analogy: A novel perspective on moralisation",
     "talk_date": "July 2, 2026",
     "talk_time": "11:50-13:10",
-    "session_title": "Morality: Conceptual and applied issues"
+    "session_title": "Morality: Conceptual and applied issues",
+    "end_date": "2026-07-04"
   },
   {
     "name": "Annual Meeting of the Cognitive Science Society",
@@ -30,6 +32,7 @@
     "talk_title": "Moralization by analogy: A novel perspective on moral change",
     "talk_date": "TBD",
     "talk_time": "TBD",
-    "session_title": ""
+    "session_title": "",
+    "end_date": "2026-07-25"
   }
 ]

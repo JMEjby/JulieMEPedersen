@@ -16,6 +16,7 @@
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="research.html">Research</a></li>
       <li><a href="publications.html">Publications</a></li>
+      <li><a href="upcoming.html">Find Me</a></li>
       <li><a href="JMEP CV.pdf">CV</a></li>
     </ul>
   </nav>
@@ -44,6 +45,7 @@
   <ul class="pub-list" id="conferences-list">
     <li class="pub-item" style="color: var(--text-light, #888)">Loading…</li>
   </ul>
+  <p style="margin-top:0.8rem;"><a href="upcoming.html">See all upcoming appearances →</a></p>
 
 </main>
 
@@ -92,32 +94,39 @@
     }
   }
 
+  function renderConference(c) {
+    let presentation = '';
+    if (c.presentation_type || c.talk_title) {
+      const parts = [];
+      parts.push([c.presentation_type, c.talk_title ? `<em>${c.talk_title}</em>` : ''].filter(Boolean).join(': '));
+      if (c.session_title) parts.push(`In the ${c.session_title} session`);
+      const bothTBD = c.talk_date === 'TBD' && c.talk_time === 'TBD';
+      const dateTime = bothTBD ? 'TBD' : [c.talk_date, c.talk_time].filter(Boolean).join(', ');
+      if (dateTime) parts.push(`@${dateTime}`);
+      presentation = parts.join(' &nbsp;·&nbsp; ');
+    }
+    return `
+      <li class="pub-item">
+        <span class="pub-title">${c.url
+          ? `<a href="${c.url}" target="_blank" rel="noopener">${c.name}</a>`
+          : c.name}</span>
+        <p class="pub-meta">${c.location} &nbsp;·&nbsp; ${c.dates}</p>
+        ${presentation ? `<p class="pub-meta">${presentation}</p>` : ''}
+      </li>`;
+  }
+
   async function loadConferences() {
     try {
       const res = await fetch('data/conferences.json');
       if (!res.ok) throw new Error();
       const conferences = await res.json();
-      document.getElementById('conferences-list').innerHTML = conferences.map(c => {
-        let presentation = '';
-        if (c.presentation_type || c.talk_title) {
-          const parts = [];
-          parts.push([c.presentation_type, c.talk_title ? `<em>${c.talk_title}</em>` : ''].filter(Boolean).join(': '));
-          if (c.session_title) parts.push(`In the ${c.session_title} session`);
-          const bothTBD = c.talk_date === 'TBD' && c.talk_time === 'TBD';
-          const dateTime = bothTBD ? 'TBD' : [c.talk_date, c.talk_time].filter(Boolean).join(', ');
-          if (dateTime) parts.push(`@${dateTime}`);
-          presentation = parts.join(' &nbsp;·&nbsp; ');
-        }
-        return `
-        <li class="pub-item">
-          <span class="pub-title">${c.url
-            ? `<a href="${c.url}" target="_blank" rel="noopener">${c.name}</a>`
-            : c.name}</span>
-          <p class="pub-meta">${c.location} &nbsp;·&nbsp; ${c.dates}</p>
-          ${presentation ? `<p class="pub-meta">${presentation}</p>` : ''}
-        </li>`;
-
-      }).join('');
+      const today = new Date().toISOString().slice(0, 10);
+      const next = conferences
+        .filter(c => c.end_date >= today)
+        .sort((a, b) => a.end_date.localeCompare(b.end_date))[0];
+      document.getElementById('conferences-list').innerHTML = next
+        ? renderConference(next)
+        : '<li class="pub-item" style="color:var(--muted)">No upcoming appearances scheduled.</li>';
     } catch (e) {
       document.getElementById('conferences-list').innerHTML = '';
     }

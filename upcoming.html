@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Where to Find Me · Julie M. E. Pedersen</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <nav>
+    <span class="nav-name">Julie M. E. Pedersen</span>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="upcoming.html" class="active">Find Me</a></li>
+      <li><a href="JMEP CV.pdf">CV</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <h2>Where to Find Me</h2>
+  <ul class="pub-list" id="upcoming-list">
+    <li class="pub-item" style="color: var(--muted)">Loading…</li>
+  </ul>
+
+</main>
+
+<footer>
+  <p>Julie M. E. Pedersen &nbsp;·&nbsp; University of Edinburgh &nbsp;·&nbsp; <a href="mailto:j.pedersen@ed.ac.uk">j.pedersen@ed.ac.uk</a></p>
+</footer>
+
+<script>
+  function renderConference(c) {
+    let presentation = '';
+    if (c.presentation_type || c.talk_title) {
+      const parts = [];
+      parts.push([c.presentation_type, c.talk_title ? `<em>${c.talk_title}</em>` : ''].filter(Boolean).join(': '));
+      if (c.session_title) parts.push(`In the ${c.session_title} session`);
+      const bothTBD = c.talk_date === 'TBD' && c.talk_time === 'TBD';
+      const dateTime = bothTBD ? 'TBD' : [c.talk_date, c.talk_time].filter(Boolean).join(', ');
+      if (dateTime) parts.push(`@${dateTime}`);
+      presentation = parts.join(' &nbsp;·&nbsp; ');
+    }
+    return `
+      <li class="pub-item">
+        <span class="pub-title">${c.url
+          ? `<a href="${c.url}" target="_blank" rel="noopener">${c.name}</a>`
+          : c.name}</span>
+        <p class="pub-meta">${c.location} &nbsp;·&nbsp; ${c.dates}</p>
+        ${presentation ? `<p class="pub-meta">${presentation}</p>` : ''}
+      </li>`;
+  }
+
+  fetch('data/conferences.json')
+    .then(r => r.json())
+    .then(conferences => {
+      const today = new Date().toISOString().slice(0, 10);
+      const upcoming = conferences
+        .filter(c => c.end_date >= today)
+        .sort((a, b) => a.end_date.localeCompare(b.end_date));
+      document.getElementById('upcoming-list').innerHTML = upcoming.length
+        ? upcoming.map(renderConference).join('')
+        : '<li class="pub-item" style="color:var(--muted)">No upcoming appearances scheduled.</li>';
+    });
+</script>
+
+</body>
+</html>

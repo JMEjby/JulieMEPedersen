@@ -8,4 +8,4 @@ Alongside my PhD, I work part-time as a research contractor with [Rethink Priori
 
 Before starting my PhD, I completed an MSc in Psychological Research (2024) and a BSc in Psychology (2023), both at the University of Edinburgh.
 
-I am always keen to chat about research and collaborations, please reach out if you are keen to talk moral change!
+I am always keen to chat about research and collaborations, please reach out if you want to talk moral change!

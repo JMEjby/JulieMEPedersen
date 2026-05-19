@@ -18,4 +18,12 @@ In collaboration with Nicolas Navarre, we have developed an alternative instanti
 
 Steve Loughnan and I investigated the role of disgust in breaking food-animal disassociation to deter dairy consumption. 
 This work was a registered report and part of my undergraduate dissertation work.
-I am not actively looking to lead work to expand on this, nut I would be interested to collaborate.
+I am not actively looking to lead work to expand on this, but I would be interested to collaborate.
+
+### Affiliations
+
+**Human Decision-Making Lab** · PI: [Adam Moore](https://www.ed.ac.uk/profile/adam-moore)
+
+**[Altruistic Minds Lab](https://www.mattiwilks.com/lab)** · PI: [Matti Wilks](https://www.mattiwilks.com/)
+
+**[Computation, Cognition, and Development Lab](https://ccdedinburgh.uk/)** · PIs: Zach Horne and Alex Doumas
