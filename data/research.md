@@ -22,8 +22,11 @@ I am not actively looking to lead work to expand on this, but I would be interes
 
 ### Affiliations
 
-**Human Decision-Making Lab** · PI: [Adam Moore](https://www.ed.ac.uk/profile/adam-moore)
+**Human Decision-Making Lab**  
+[Adam Moore](https://edwebprofiles.ed.ac.uk/profile/adam-moore)
 
-**[Altruistic Minds Lab](https://www.mattiwilks.com/lab)** · PI: [Matti Wilks](https://www.mattiwilks.com/)
+**[Altruistic Minds Lab](https://www.mattiwilks.com/lab)**  
+[Matti Wilks](https://www.mattiwilks.com/)
 
-**[Computation, Cognition, and Development Lab](https://ccdedinburgh.uk/)** · PIs: Zach Horne and Alex Doumas
+**[Computation, Cognition, and Development Lab](https://ccdedinburgh.uk/)**  
+[Zachary Horne](https://edwebprofiles.ed.ac.uk/profile/zachary-horne) and [Alex Doumas](https://edwebprofiles.ed.ac.uk/profile/leonidas-doumas)
