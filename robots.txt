@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jmejby.github.io/JulieMEPedersen/sitemap.xml
