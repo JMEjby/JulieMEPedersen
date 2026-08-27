@@ -5,6 +5,7 @@
     "venue": "Proceedings of the Annual Meeting of the Cognitive Science Society",
     "year": 2026,
     "links": [
+      { "label": "Proceedings", "url": "https://escholarship.org/uc/item/8wr906s2" },
       { "label": "Preprint", "url": "https://osf.io/preprints/psyarxiv/e2r3p_v2" }
     ]
   },
